@@ -5,17 +5,11 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public static Player Instance {get; private set;}
-    public int Hp = 3;
-    public int Damage = 1;
-    public float Speed = 2;
-    float ShootTimer = 0;
-    float ShootDelay = 0.4f;
-    public int Boomitem = 3;
-    public int Shielditem = 2;
+    public int Hp = 3, Damage = 1, Boomitem = 3, Shielditem = 2;
+    public float Speed = 2, ShootTimer = 0, ShootDelay = 0.4f, moveX, moveY;
     public bool IsShield = false;
     public GameObject[] Bullet;
     public GameObject Boom;
-    float moveX, moveY;
 
     private void Awake()
     {
@@ -32,6 +26,8 @@ public class Player : MonoBehaviour
     {
         CameraIn();
         Attack();
+        UseBoom();
+        UseShield();
         if (Input.GetKeyDown(KeyCode.U))
         {
             if (Damage < 3)
@@ -48,7 +44,7 @@ public class Player : MonoBehaviour
     {
         Move();
     }
-    public void Move()
+    void Move()
     {
         float H = Input.GetAxisRaw("Horizontal");
         float V = Input.GetAxisRaw("Vertical");
@@ -56,7 +52,7 @@ public class Player : MonoBehaviour
         Vector3 NextPos = new Vector3(H, V, 0) * Speed * Time.deltaTime;
         transform.position = NowPos + NextPos;
     }
-    public void CameraIn()
+    void CameraIn()
     {
         Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
         if (pos.x < 0f) pos.x = 0f;
@@ -65,7 +61,7 @@ public class Player : MonoBehaviour
         else if (pos.y > 1f) pos.y = 1f;
         transform.position = Camera.main.ViewportToWorldPoint(pos);
     }
-    public void Attack()
+    void Attack()
     {
         if (Input.GetKey(KeyCode.Z) && ShootTimer >= ShootDelay)
         {
@@ -86,5 +82,24 @@ public class Player : MonoBehaviour
             }
         }
         ShootTimer += Time.deltaTime;
+    }
+    void UseBoom()
+    {
+        GameObject[] ENEMY = GameObject.FindGameObjectsWithTag("Enemy");
+        if (Input.GetKey(KeyCode.X) && Boomitem > 0)
+        {
+            Boomitem -= 1;
+            for (int i = 0; i < ENEMY.Length; i++)
+            {
+               
+            }
+        }
+    }
+    void UseShield()
+    {
+        if (Input.GetKey(KeyCode.C) && Shielditem > 0)
+        {
+
+        }
     }
 }
