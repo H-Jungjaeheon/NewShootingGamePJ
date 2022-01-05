@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     public int Boomitem = 3;
     public int Shielditem = 2;
     public bool IsShield = false;
-    public GameObject Bullet;
+    public GameObject[] Bullet;
     public GameObject Boom;
     float moveX, moveY;
 
@@ -69,8 +69,21 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Z) && ShootTimer >= ShootDelay)
         {
-            Instantiate(Bullet, this.transform.position, transform.rotation);
-            ShootTimer = 0;
+            if (Damage == 1)
+            {
+                Instantiate(Bullet[0], this.transform.position, transform.rotation);
+                ShootTimer = 0;
+            }
+            else if(Damage == 2)
+            {
+                Instantiate(Bullet[1], this.transform.position, transform.rotation);
+                ShootTimer = 0;
+            }
+            else if (Damage == 3)
+            {
+                Instantiate(Bullet[2], this.transform.position, transform.rotation);
+                ShootTimer = 0;
+            }
         }
         ShootTimer += Time.deltaTime;
     }

@@ -838,7 +838,10 @@ MonoBehaviour:
   Boomitem: 3
   Shielditem: 2
   IsShield: 0
-  Bullet: {fileID: 3513669108355389483, guid: 929b3652cc83b9c499b312e00baf39e0, type: 3}
+  Bullet:
+  - {fileID: 3513669108355389483, guid: 929b3652cc83b9c499b312e00baf39e0, type: 3}
+  - {fileID: 12725506423025944, guid: 1c19dc6256677194daae6328df105d85, type: 3}
+  - {fileID: 4804275819259054680, guid: 507a6604d3d699b438fb9709b8ce5abd, type: 3}
   Boom: {fileID: 0}
 --- !u!61 &1172765954
 BoxCollider2D:
