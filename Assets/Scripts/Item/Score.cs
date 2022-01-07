@@ -28,5 +28,9 @@ public class Score : MonoBehaviour
             GameManager.Instance.Score += 500;
             Destroy(this.gameObject);
         }
+        if (collision.gameObject.tag == ("Wall"))
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

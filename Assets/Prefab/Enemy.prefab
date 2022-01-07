@@ -47,10 +47,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PowerUp: {fileID: 4210842778245374049, guid: d4cbebc0d10e3e248ac09acc7b66a171, type: 3}
-  Boom: {fileID: 0}
-  Shield: {fileID: 0}
-  Coin: {fileID: 0}
+  Boom: {fileID: 1108024795226148200, guid: da1b1884de3f55041abe0ed2464f3bb5, type: 3}
+  Shield: {fileID: 7451918502431007032, guid: 961a0cd6bf5ed504cb2040981b20a645, type: 3}
+  Coin: {fileID: 1016959414540181204, guid: 7c0c99270bd538e46b5b391864242f82, type: 3}
   HP: 6
+  Score: 100
   Speed: 0.5
 --- !u!50 &3899475482527948418
 Rigidbody2D:

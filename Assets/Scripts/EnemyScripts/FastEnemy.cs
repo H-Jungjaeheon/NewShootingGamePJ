@@ -17,6 +17,7 @@ public class FastEnemy : Enemy
     void Update()
     {
         Move();
+        Dead();
     }
     void warning()
     {
@@ -27,6 +28,10 @@ public class FastEnemy : Enemy
     {
         GO = true;
         Speed = 6;
+    }
+    public override void Dead()
+    {
+        base.Dead();
     }
     public override void Move()
     {

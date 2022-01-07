@@ -13,8 +13,15 @@ public class EnemyBullet : MonoBehaviour
         }
         else if(collision.gameObject.tag == "Player")
         {
-            Player.Instance.Hp -= 1;
-            Destroy(this.gameObject);
+            if (Player.Instance.IsShield == false)
+            {
+                Player.Instance.Hp -= 1;
+                Destroy(this.gameObject);
+            }
+            else if(Player.Instance.IsShield == true)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
     // Start is called before the first frame update

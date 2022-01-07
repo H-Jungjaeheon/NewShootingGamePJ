@@ -491,6 +491,7 @@ MonoBehaviour:
   Shield: {fileID: 7451918502431007032, guid: 961a0cd6bf5ed504cb2040981b20a645, type: 3}
   Coin: {fileID: 1016959414540181204, guid: 7c0c99270bd538e46b5b391864242f82, type: 3}
   HP: 5
+  Score: 150
   Speed: 4
   Warning: {fileID: 7530536358007254893}
 --- !u!1001 &1181845029836668427

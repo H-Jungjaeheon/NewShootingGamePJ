@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public static Enemy Instance { get; private set; }
     public GameObject PowerUp, Boom, Shield, Coin;
-    public int HP;
+    public int HP, Score;
     public float Speed;
 
     private void Awake()
@@ -33,6 +33,11 @@ public class Enemy : MonoBehaviour
     {
         if (HP <= 0)
         {
+            if(GameManager.Instance.IsBossSpawn == false)
+            {
+                GameManager.Instance.MonsterDead += 1;
+            }
+            GameManager.Instance.Score += Score;
             int RandItem = Random.Range(0, 10);
             if(RandItem == 0 || RandItem == 1 || RandItem == 2)
             {
@@ -53,16 +58,27 @@ public class Enemy : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    public void BoomHit(int Dmg)
+    {
+        HP -= Dmg;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == ("Bullet"))
         {
             HP -= Player.Instance.Damage;
         }
-        else if (collision.gameObject.tag == ("Player"))
+        if (collision.gameObject.tag == ("Player"))
         {
-            Player.Instance.Hp -= 1;
-            Destroy(this.gameObject);
+            if (Player.Instance.IsShield == false)
+            {
+                Player.Instance.Hp -= 1;
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }

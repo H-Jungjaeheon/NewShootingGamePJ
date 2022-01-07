@@ -37,5 +37,9 @@ public class Shield : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+        if (collision.gameObject.tag == ("Wall"))
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

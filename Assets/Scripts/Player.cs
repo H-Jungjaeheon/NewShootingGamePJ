@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+ 
     }
 
     // Update is called once per frame
@@ -26,8 +26,17 @@ public class Player : MonoBehaviour
     {
         CameraIn();
         Attack();
-        UseBoom();
-        UseShield();
+        if (Input.GetKeyDown(KeyCode.X) && Boomitem > 0)
+        {
+            Boomitem-=1;
+            UseBoom();
+        }
+        if (Input.GetKeyDown(KeyCode.C) && Shielditem > 0)
+        {
+            Shielditem -= 1;
+            IsShield = true;
+            Invoke("UseShield", 5);
+        }
         if (Input.GetKeyDown(KeyCode.U))
         {
             if (Damage < 3)
@@ -85,21 +94,15 @@ public class Player : MonoBehaviour
     }
     void UseBoom()
     {
-        GameObject[] ENEMY = GameObject.FindGameObjectsWithTag("Enemy");
-        if (Input.GetKey(KeyCode.X) && Boomitem > 0)
+        GameObject[] Enemys = GameObject.FindGameObjectsWithTag("Enemy");
+        for (int i = 0; i < Enemys.Length; i++)
         {
-            Boomitem -= 1;
-            for (int i = 0; i < ENEMY.Length; i++)
-            {
-               
-            }
+            Enemy enemyhp = Enemys[i].GetComponent<Enemy>();
+            enemyhp.BoomHit(Player.Instance.Damage * 3);
         }
     }
     void UseShield()
     {
-        if (Input.GetKey(KeyCode.C) && Shielditem > 0)
-        {
-
-        }
+        IsShield = false;
     }
 }
