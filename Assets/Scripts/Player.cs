@@ -100,6 +100,7 @@ public class Player : MonoBehaviour
             Enemy enemyhp = Enemys[i].GetComponent<Enemy>();
             enemyhp.BoomHit(Player.Instance.Damage * 3);
         }
+        
     }
     void UseShield()
     {

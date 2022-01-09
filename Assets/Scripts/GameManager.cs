@@ -7,7 +7,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public int Score = 0, MonsterDead = 0;
     public bool IsBossSpawn = false;
-    public GameObject[] HpIcon, BoomIcon, ShieldIcon;
+    public GameObject[] HpIcon, BoomIcon, ShieldIcon, Boss;
+    public GameObject SpawnPoint;
     private void Awake()
     {
         Instance = this;
@@ -36,6 +37,8 @@ public class GameManager : MonoBehaviour
                 break;
             case 0:
                 HpIcon[2].SetActive(false);
+                HpIcon[1].SetActive(false);
+                HpIcon[0].SetActive(false);
                 break;
         }
         switch (Player.Instance.Boomitem)
@@ -82,6 +85,8 @@ public class GameManager : MonoBehaviour
         {
             case 25:
                 IsBossSpawn = true;
+                Instantiate(Boss[0], SpawnPoint.transform.position, transform.rotation);
+                MonsterDead+=1;
                 break;
             case 75:
                 IsBossSpawn = true;
