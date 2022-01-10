@@ -61,6 +61,7 @@ public class OnceBoss : Enemy
         if (collision.gameObject.tag == ("Player"))
         {
             Player.Instance.Hp -= 3;
+            Player.Instance.IsHit = true;
         }
         if (collision.gameObject.tag == ("Bullet"))
         {

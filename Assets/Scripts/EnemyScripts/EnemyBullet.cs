@@ -16,6 +16,7 @@ public class EnemyBullet : MonoBehaviour
             if (Player.Instance.IsShield == false)
             {
                 Player.Instance.Hp -= 1;
+                Player.Instance.IsHit = true;
                 Destroy(this.gameObject);
             }
             else if(Player.Instance.IsShield == true)
