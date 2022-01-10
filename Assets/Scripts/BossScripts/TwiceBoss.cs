@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TwiceBoss : Enemy
 {
-    public float MaxMoveCount = 5, MoveCount = 0, MaxPattonCount = 6, PattonCount = 0, MaxHp;
+    public float MaxMoveCount = 5, MoveCount = 0, MaxPattonCount = 8, PattonCount = 0, MaxHp;
     public GameObject Bullet;
     public GameObject[] PattonSpawn;
     public Image HpSprite, NULLHpSprite;
@@ -17,6 +17,10 @@ public class TwiceBoss : Enemy
 
     // Update is called once per frame
     void Update()
+    {
+        
+    }
+    private void FixedUpdate()
     {
         MoveCount += Time.deltaTime;
         PattonCount += Time.deltaTime;
@@ -44,9 +48,9 @@ public class TwiceBoss : Enemy
         Instantiate(Bullet, PattonSpawn[2].transform.position, transform.rotation);
         Instantiate(Bullet, PattonSpawn[4].transform.position, transform.rotation);
         Instantiate(Bullet, PattonSpawn[6].transform.position, transform.rotation);
-        Invoke("patton2", 5);
+        Invoke("patton2", 6f);
     }
-    void patton2()
+    public void patton2()
     {
         PattonCount = 0;
         Instantiate(Bullet, PattonSpawn[1].transform.position, transform.rotation);
@@ -73,6 +77,7 @@ public class TwiceBoss : Enemy
         if (collision.gameObject.tag == ("Player"))
         {
             Player.Instance.Hp -= 3;
+            Player.Instance.IsHit = true;
         }
         if (collision.gameObject.tag == ("Bullet"))
         {

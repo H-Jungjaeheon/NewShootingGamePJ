@@ -7,9 +7,11 @@ public class Player : MonoBehaviour
     public static Player Instance {get; private set;}
     public int Hp = 3, Damage = 1, Boomitem = 3, Shielditem = 2;
     public float Speed = 2, ShootTimer = 0, ShootDelay = 0.4f, moveX, moveY;
-    public bool IsShield = false;
+    public bool IsShield = false, IsHit = false;
     public GameObject[] Bullet;
     public GameObject Boom;
+    CameraShake cam;
+   
 
     private void Awake()
     {
@@ -18,7 +20,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
- 
+        
     }
 
     // Update is called once per frame
@@ -48,11 +50,16 @@ public class Player : MonoBehaviour
                 Damage += 0;
             }
         }
+        if(IsHit == true)
+        {
+            Hit();
+        }
     }
     private void FixedUpdate()
     {
         Move();
     }
+   
     void Move()
     {
         float H = Input.GetAxisRaw("Horizontal");
@@ -105,5 +112,11 @@ public class Player : MonoBehaviour
     void UseShield()
     {
         IsShield = false;
+    }
+    void Hit()
+    {
+        cam = GameObject.FindWithTag("MainCamera").GetComponent<CameraShake>();
+        cam.VibrateForTime(0.4f);
+        IsHit = false;
     }
 }

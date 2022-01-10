@@ -1,33 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossBullet : MonoBehaviour
 {
-    public int Speed = 7;
+    int Speed;
     public GameObject Warning;
-    bool GO = false;
     // Start is called before the first frame update
     void Start()
     {
         Speed = 0;
-        warning();
+        //Instantiate(Warning, transform.position, transform.rotation);
+        Invoke("BulltGo", 3f);
     }
-    void warning()
+    void BulltGo()
     {
-        Instantiate(Warning, this.transform.position, transform.rotation);
-        Invoke("Go", 3);
+        Destroy(Warning);
+        Speed = 7;
     }
     // Update is called once per frame
     void Update()
-    {
-        MoveBullet();
-        if (GO == true)
-        {
-            Warning.SetActive(false);
-        }
-    }
-    void MoveBullet()
     {
         this.transform.position -= new Vector3(0, Speed * Time.deltaTime, 0);
     }
@@ -42,6 +35,7 @@ public class BossBullet : MonoBehaviour
             if (Player.Instance.IsShield == false)
             {
                 Player.Instance.Hp -= 1;
+                Player.Instance.IsHit = true;
                 Destroy(this.gameObject);
             }
             else if (Player.Instance.IsShield == true)
@@ -49,10 +43,5 @@ public class BossBullet : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
-    }
-    void Go()
-    {
-        GO = true;
-        Speed = 7;
     }
 }

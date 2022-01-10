@@ -31,14 +31,18 @@ public class GameManager : MonoBehaviour
         {
             case 2:
                 HpIcon[0].SetActive(false);
+                HpIcon[1].SetActive(true);
+                HpIcon[2].SetActive(true);
                 break;
             case 1:
+                HpIcon[0].SetActive(false);
                 HpIcon[1].SetActive(false);
+                HpIcon[2].SetActive(true);
                 break;
             case 0:
-                HpIcon[2].SetActive(false);
-                HpIcon[1].SetActive(false);
                 HpIcon[0].SetActive(false);
+                HpIcon[1].SetActive(false);
+                HpIcon[2].SetActive(false);
                 break;
         }
         switch (Player.Instance.Boomitem)
@@ -90,9 +94,13 @@ public class GameManager : MonoBehaviour
                 break;
             case 75:
                 IsBossSpawn = true;
+                Instantiate(Boss[1], SpawnPoint.transform.position, transform.rotation);
+                MonsterDead += 1;
                 break;
             case 125:
                 IsBossSpawn = true;
+                Instantiate(Boss[2], SpawnPoint.transform.position, transform.rotation);
+                MonsterDead += 1;
                 break;
         }
     }
