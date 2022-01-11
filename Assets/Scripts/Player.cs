@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class Player : MonoBehaviour
     public float Speed = 2, ShootTimer = 0, ShootDelay = 0.4f, moveX, moveY;
     public bool IsShield = false, IsHit = false;
     public GameObject[] Bullet;
-    public GameObject Boom;
+    public GameObject BoomImage, ShieldImage;
     CameraShake cam;
    
 
@@ -20,7 +21,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -32,6 +33,8 @@ public class Player : MonoBehaviour
         {
             Boomitem-=1;
             UseBoom();
+            BoomImage.SetActive(true);
+            Invoke("BoomEffect", 0.5f);
         }
         if (Input.GetKeyDown(KeyCode.C) && Shielditem > 0)
         {
@@ -53,6 +56,14 @@ public class Player : MonoBehaviour
         if(IsHit == true)
         {
             Hit();
+        }
+        if(IsShield == true)
+        {
+            ShieldImage.SetActive(true);
+        }
+        else
+        {
+            ShieldImage.SetActive(false);
         }
     }
     private void FixedUpdate()
@@ -107,7 +118,6 @@ public class Player : MonoBehaviour
             Enemy enemyhp = Enemys[i].GetComponent<Enemy>();
             enemyhp.BoomHit(Player.Instance.Damage * 3);
         }
-        
     }
     void UseShield()
     {
@@ -118,5 +128,9 @@ public class Player : MonoBehaviour
         cam = GameObject.FindWithTag("MainCamera").GetComponent<CameraShake>();
         cam.VibrateForTime(0.4f);
         IsHit = false;
+    }
+    void BoomEffect()
+    {
+        BoomImage.SetActive(false);
     }
 }

@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class ThirdBoss : Enemy
 {
-    public float MaxMoveCount = 5, MoveCount = 0, MaxPattonCount = 7, PattonCount = 0, MaxHp;
+    public float MaxMoveCount = 5, MoveCount = 0, MaxPattonCount = 7, PattonCount = 0, MaxHP = 0;
     public GameObject Bullet;
     public GameObject[] PattonSpawn, SpawnEnemy;
-    public Image HpSprite, NULLHpSprite;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +27,7 @@ public class ThirdBoss : Enemy
         Dead();
         HpSprite.transform.position = this.transform.position + new Vector3(0, 0.8f, 0);
         NULLHpSprite.transform.position = this.transform.position + new Vector3(0, 0.8f, 0);
-        HpSprite.fillAmount = HP / MaxHp;
+        HpSprite.fillAmount = HP / MaxHP;
         if (MoveCount <= MaxMoveCount)
         {
             Move();

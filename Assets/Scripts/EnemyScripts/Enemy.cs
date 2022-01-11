@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
     public static Enemy Instance { get; private set; }
     public GameObject PowerUp, Boom, Shield, Coin;
-    public int HP, Score;
-    public float Speed;
+    public Image HpSprite, NULLHpSprite;
+    public int HP, Score, MaxHp;
+    public float Speed, MAxHP;
 
     private void Awake()
     {
@@ -24,6 +26,9 @@ public class Enemy : MonoBehaviour
     {
         Move();
         Dead();
+        HpSprite.transform.position = this.transform.position + new Vector3(0, 0.8f, 0);
+        NULLHpSprite.transform.position = this.transform.position + new Vector3(0, 0.8f, 0);
+        HpSprite.fillAmount = HP / MAxHP;
     }
     public virtual void Move()
     {

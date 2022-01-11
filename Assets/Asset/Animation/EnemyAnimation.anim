@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TwiceBossAnimation
+  m_Name: EnemyAnimation
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,9 +20,9 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: da257af65edaf484d872cab36db76d47, type: 3}
+      value: {fileID: 21300000, guid: bced5d88105a5b247b0547b29a703e11, type: 3}
     - time: 0.083333336
-      value: {fileID: 21300000, guid: 1d32ecb437f61d94c81b385ca0604d6c, type: 3}
+      value: {fileID: 21300000, guid: f1a443a5ef8ea7a46824bdc09c850bc2, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -42,8 +42,8 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: da257af65edaf484d872cab36db76d47, type: 3}
-    - {fileID: 21300000, guid: 1d32ecb437f61d94c81b385ca0604d6c, type: 3}
+    - {fileID: 21300000, guid: bced5d88105a5b247b0547b29a703e11, type: 3}
+    - {fileID: 21300000, guid: f1a443a5ef8ea7a46824bdc09c850bc2, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

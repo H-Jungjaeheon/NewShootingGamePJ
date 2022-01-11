@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FastEnemy : Enemy
 {
     public GameObject Warning;
     bool GO = false;
+    public int MaxHP;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,9 @@ public class FastEnemy : Enemy
     {
         Move();
         Dead();
+        HpSprite.transform.position = this.transform.position + new Vector3(0, 0.8f, 0);
+        NULLHpSprite.transform.position = this.transform.position + new Vector3(0, 0.8f, 0);
+        HpSprite.fillAmount = HP / MaxHP;
     }
     void warning()
     {
@@ -32,6 +37,7 @@ public class FastEnemy : Enemy
     public override void Dead()
     {
         base.Dead();
+        Destroy(Warning);
     }
     public override void Move()
     {

@@ -5,9 +5,8 @@ using UnityEngine.UI;
 
 public class OnceBoss : Enemy
 {
-    public float MaxMoveCount = 5, MoveCount = 0, MaxSpawnCount = 6, SpawnCount = 0, MaxHp;
+    public float MaxMoveCount = 5, MoveCount = 0, MaxSpawnCount = 6, SpawnCount = 0, MaxHP = 0;
     public GameObject[] SpawnEnemy;
-    public Image HpSprite, NULLHpSprite;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +21,7 @@ public class OnceBoss : Enemy
         Dead();
         HpSprite.transform.position = this.transform.position + new Vector3(0, 0.8f, 0);
         NULLHpSprite.transform.position = this.transform.position + new Vector3(0, 0.8f, 0);
-        HpSprite.fillAmount = HP / MaxHp;
+        HpSprite.fillAmount = HP / MaxHP;
         if (MoveCount <= MaxMoveCount)
         {
             Move();
