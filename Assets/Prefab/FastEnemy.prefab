@@ -279,6 +279,7 @@ MonoBehaviour:
   Score: 150
   MaxHp: 5
   Speed: 4
+  MAxHP: 5
   Warning: {fileID: 5836037425845829450}
   MaxHP: 5
 --- !u!1 &5836037425845829450

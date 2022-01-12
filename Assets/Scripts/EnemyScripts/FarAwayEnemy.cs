@@ -20,8 +20,8 @@ public class FarAwayEnemy : Enemy
         Dead();
         Move();
         Shoot();
-        HpSprite.transform.position = this.transform.position + new Vector3(0, 0.8f, 0);
-        NULLHpSprite.transform.position = this.transform.position + new Vector3(0, 0.8f, 0);
+        HpSprite.transform.position = this.transform.position + new Vector3(0, 0.4f, 0);
+        NULLHpSprite.transform.position = this.transform.position + new Vector3(0, 0.4f, 0);
         HpSprite.fillAmount = HP / MaxHP;
     }
     public override void Dead()

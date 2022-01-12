@@ -26,8 +26,8 @@ public class Enemy : MonoBehaviour
     {
         Move();
         Dead();
-        HpSprite.transform.position = this.transform.position + new Vector3(0, 0.8f, 0);
-        NULLHpSprite.transform.position = this.transform.position + new Vector3(0, 0.8f, 0);
+        HpSprite.transform.position = this.transform.position + new Vector3(0, 0.4f, 0);
+        NULLHpSprite.transform.position = this.transform.position + new Vector3(0, 0.4f, 0);
         HpSprite.fillAmount = HP / MAxHP;
     }
     public virtual void Move()
@@ -72,6 +72,7 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == ("Bullet"))
         {
             HP -= Player.Instance.Damage;
+            Invoke("SetColor", 0.9f);
         }
         if (collision.gameObject.tag == ("Player"))
         {
@@ -86,5 +87,13 @@ public class Enemy : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+        if(collision.gameObject.tag == ("Wall"))
+        {
+            Destroy(this.gameObject);
+        }
+    }
+    void SetColor()
+    {
+        
     }
 }

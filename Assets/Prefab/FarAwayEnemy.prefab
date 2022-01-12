@@ -103,6 +103,7 @@ MonoBehaviour:
   Score: 200
   MaxHp: 7
   Speed: 0.5
+  MAxHP: 0
   EnemyBullet: {fileID: 2793496293023569581, guid: 97a750a058891c64eb94ebfc3282634a,
     type: 3}
   Player: {fileID: 0}

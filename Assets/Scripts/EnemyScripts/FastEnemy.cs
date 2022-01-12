@@ -20,13 +20,13 @@ public class FastEnemy : Enemy
     {
         Move();
         Dead();
-        HpSprite.transform.position = this.transform.position + new Vector3(0, 0.8f, 0);
-        NULLHpSprite.transform.position = this.transform.position + new Vector3(0, 0.8f, 0);
-        HpSprite.fillAmount = HP / MaxHP;
+        HpSprite.transform.position = this.transform.position + new Vector3(0, 0.4f, 0);
+        NULLHpSprite.transform.position = this.transform.position + new Vector3(0, 0.4f, 0);
+        HpSprite.fillAmount = HP / MAxHP;
     }
     void warning()
     {
-        Instantiate(Warning, this.transform.position, transform.rotation);
+        //Instantiate(Warning, this.transform.position, transform.rotation);
         Invoke("Go", 4);
     }
     void Go()
@@ -37,7 +37,6 @@ public class FastEnemy : Enemy
     public override void Dead()
     {
         base.Dead();
-        Destroy(Warning);
     }
     public override void Move()
     {
