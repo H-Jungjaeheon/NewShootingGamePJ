@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     public int Speed = 0;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "L,RWall")
+        if(collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "EditorOnly")
         {
             Destroy(this.gameObject);
         }
@@ -22,6 +22,14 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         MoveBullet();
+        if (GameManager.Instance.IsStop == true)
+        {
+            Speed = 0;
+        }
+        else
+        {
+            Speed = 6;
+        }
     }
     void MoveBullet()
     {

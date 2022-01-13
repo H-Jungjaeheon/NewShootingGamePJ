@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     public int Score = 0, MonsterDead = 0;
-    public bool IsBossSpawn = false;
+    public bool IsBossSpawn = false, IsStop = false, IsClear = false;
     public GameObject[] HpIcon, BoomIcon, ShieldIcon, Boss;
     public GameObject SpawnPoint;
     private void Awake()
@@ -24,6 +24,21 @@ public class GameManager : MonoBehaviour
     {
         AllIcon();
         BossSpawn();
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            IsBossSpawn = true;
+            Instantiate(Boss[0], SpawnPoint.transform.position, transform.rotation);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            IsBossSpawn = true;
+            Instantiate(Boss[1], SpawnPoint.transform.position, transform.rotation);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            IsBossSpawn = true;
+            Instantiate(Boss[2], SpawnPoint.transform.position, transform.rotation);
+        }
     }
     void AllIcon()
     {

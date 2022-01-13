@@ -23,6 +23,14 @@ public class FastEnemy : Enemy
         HpSprite.transform.position = this.transform.position + new Vector3(0, 0.4f, 0);
         NULLHpSprite.transform.position = this.transform.position + new Vector3(0, 0.4f, 0);
         HpSprite.fillAmount = HP / MAxHP;
+        if (GameManager.Instance.IsStop == true)
+        {
+            Speed = 0;
+        }
+        else
+        {
+            Speed = 4;
+        }
     }
     void warning()
     {

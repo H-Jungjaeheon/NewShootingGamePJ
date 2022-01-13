@@ -23,6 +23,15 @@ public class FarAwayEnemy : Enemy
         HpSprite.transform.position = this.transform.position + new Vector3(0, 0.4f, 0);
         NULLHpSprite.transform.position = this.transform.position + new Vector3(0, 0.4f, 0);
         HpSprite.fillAmount = HP / MaxHP;
+        if (GameManager.Instance.IsStop == true)
+        {
+            Speed = 0;
+            ShootCount = ShootCount;
+        }
+        else
+        {
+            Speed = 0.5f;
+        }
     }
     public override void Dead()
     {

@@ -8,9 +8,9 @@ public class Player : MonoBehaviour
     public static Player Instance {get; private set;}
     public int Hp = 3, Damage = 1, Boomitem = 3, Shielditem = 2;
     public float Speed = 2, ShootTimer = 0, ShootDelay = 0.4f, moveX, moveY;
-    public bool IsShield = false, IsHit = false;
+    public bool IsShield = false, IsHit = false, IsOver = false;
     public GameObject[] Bullet;
-    public GameObject BoomImage, ShieldImage;
+    public GameObject BoomImage, ShieldImage, Particle;
     CameraShake cam;
    
 
@@ -64,6 +64,21 @@ public class Player : MonoBehaviour
         else
         {
             ShieldImage.SetActive(false);
+        }
+        if (GameManager.Instance.IsStop == true)
+        {
+            Speed = 0;
+            ShootTimer = ShootTimer;
+        }
+        else
+        {
+            Speed = 2;
+        }
+        if(Hp <= 0)
+        {
+            IsOver = true;
+            Instantiate(Particle, this.transform.position, transform.rotation);
+            Destroy(this.gameObject);
         }
     }
     private void FixedUpdate()

@@ -34,6 +34,14 @@ public class OnceBoss : Enemy
         {
             Spawn();
         }
+        if (Input.GetKey(KeyCode.Q))
+        {
+            HP = 0;
+        }
+        if (GameManager.Instance.IsStop == true)
+        {
+            Speed = 0;
+        }
     }
     public override void Dead()
     {
@@ -47,8 +55,8 @@ public class OnceBoss : Enemy
     {
         this.transform.position -= new Vector3(Speed * Time.deltaTime, 0, 0);
         Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
-        if (pos.x < 0.1f) Speed *= -1;
-        else if (pos.x > 0.9f) Speed *= -1;
+        //if (pos.x < 0.1f) Speed *= -1;
+        //else if (pos.x > 0.9f) Speed *= -1;
     }
     public void Spawn()
     {
@@ -65,6 +73,11 @@ public class OnceBoss : Enemy
         if (collision.gameObject.tag == ("Bullet"))
         {
             HP -= Player.Instance.Damage;
+        }
+        if (collision.gameObject.tag == ("L,RWall"))
+        {
+            Debug.Log("¥Í¿Ω");
+            Speed *= -1;
         }
     }
 }

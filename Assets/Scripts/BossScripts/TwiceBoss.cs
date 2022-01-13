@@ -17,7 +17,14 @@ public class TwiceBoss : Enemy
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.Q))
+        {
+            HP = 0;
+        }
+        if (GameManager.Instance.IsStop == true)
+        {
+            Speed = 0;
+        }
     }
     private void FixedUpdate()
     {
@@ -81,6 +88,10 @@ public class TwiceBoss : Enemy
         if (collision.gameObject.tag == ("Bullet"))
         {
             HP -= Player.Instance.Damage;
+        }
+        if (collision.gameObject.tag == ("L,RWall"))
+        {
+            Speed *= -1;
         }
     }
 }

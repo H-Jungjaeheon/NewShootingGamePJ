@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
     public static Enemy Instance { get; private set; }
-    public GameObject PowerUp, Boom, Shield, Coin;
+    public GameObject PowerUp, Boom, Shield, Coin, Particle;
     public Image HpSprite, NULLHpSprite;
     public int HP, Score, MaxHp;
     public float Speed, MAxHP;
@@ -29,6 +29,14 @@ public class Enemy : MonoBehaviour
         HpSprite.transform.position = this.transform.position + new Vector3(0, 0.4f, 0);
         NULLHpSprite.transform.position = this.transform.position + new Vector3(0, 0.4f, 0);
         HpSprite.fillAmount = HP / MAxHP;
+        if (GameManager.Instance.IsStop == true)
+        {
+            Speed = 0;
+        }
+        else
+        {
+            Speed = 0.5f;
+        }
     }
     public virtual void Move()
     {
@@ -38,7 +46,8 @@ public class Enemy : MonoBehaviour
     {
         if (HP <= 0)
         {
-            if(GameManager.Instance.IsBossSpawn == false)
+            Instantiate(Particle, this.transform.position, transform.rotation);
+            if (GameManager.Instance.IsBossSpawn == false)
             {
                 GameManager.Instance.MonsterDead += 1;
             }
@@ -80,10 +89,12 @@ public class Enemy : MonoBehaviour
             {
                 Player.Instance.Hp -= 1;
                 Player.Instance.IsHit = true;
+                Instantiate(Particle, this.transform.position, transform.rotation);
                 Destroy(this.gameObject);
             }
             else
             {
+                Instantiate(Particle, this.transform.position, transform.rotation);
                 Destroy(this.gameObject);
             }
         }

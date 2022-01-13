@@ -273,6 +273,8 @@ MonoBehaviour:
   Boom: {fileID: 1108024795226148200, guid: da1b1884de3f55041abe0ed2464f3bb5, type: 3}
   Shield: {fileID: 7451918502431007032, guid: 961a0cd6bf5ed504cb2040981b20a645, type: 3}
   Coin: {fileID: 1016959414540181204, guid: 7c0c99270bd538e46b5b391864242f82, type: 3}
+  Particle: {fileID: 5552565257967826011, guid: 813989f7b1073bc429a7a4afa2e81034,
+    type: 3}
   HpSprite: {fileID: 7043742488722542639}
   NULLHpSprite: {fileID: 6414190997348114842}
   HP: 5

@@ -18,7 +18,18 @@ public class ThirdBoss : Enemy
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKey(KeyCode.Q))
+        {
+            HP = 0;
+        }
+        if (GameManager.Instance.IsStop == true)
+        {
+            Speed = 0;
+        }
+        if (HP <= 0)
+        {
+            GameManager.Instance.IsClear = true;
+        }
     }
     private void FixedUpdate()
     {
@@ -96,6 +107,7 @@ public class ThirdBoss : Enemy
     {
         base.Dead();
     }
+    
     public override void Move()
     {
         base.Move();

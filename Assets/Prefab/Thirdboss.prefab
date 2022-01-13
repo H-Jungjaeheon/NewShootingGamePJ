@@ -95,16 +95,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4054b88e71477c46a8dc1712bfe09e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PowerUp: {fileID: 0}
-  Boom: {fileID: 0}
-  Shield: {fileID: 0}
-  Coin: {fileID: 0}
+  PowerUp: {fileID: 7451918502431007032, guid: 961a0cd6bf5ed504cb2040981b20a645, type: 3}
+  Boom: {fileID: 7451918502431007032, guid: 961a0cd6bf5ed504cb2040981b20a645, type: 3}
+  Shield: {fileID: 7451918502431007032, guid: 961a0cd6bf5ed504cb2040981b20a645, type: 3}
+  Coin: {fileID: 7451918502431007032, guid: 961a0cd6bf5ed504cb2040981b20a645, type: 3}
+  Particle: {fileID: 5552565257967826011, guid: 813989f7b1073bc429a7a4afa2e81034,
+    type: 3}
   HpSprite: {fileID: 2927959229867461564}
   NULLHpSprite: {fileID: 2927959230916335240}
   HP: 200
   Score: 5000
   MaxHp: 200
   Speed: 1
+  MAxHP: 0
   MaxMoveCount: 5
   MoveCount: 0
   MaxPattonCount: 7
